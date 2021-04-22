@@ -1,167 +1,51 @@
-#include<stdio.h>
-#define DISCIPLINAS 2 //DEFINE => Faz alteração de de uma instrução qualquer
-#define MAXALUNOS 2  //Palavra reservado no C, para colocar uma constante
+#include <stdio.h>
+
+int main(void){
+  int vet[4]; //O inteiro tem o tamanho de 4Bytes (incrementa a  cada 4)
+  printf("O endereço da primeira posição é %p\n", &vet[0]);
+
+  printf("O endereço da primeira posição é %p\n", &vet[1]);
+
+  printf("O endereço da primeira posição é %p\n", &vet[2]);
+
+  printf("O endereço da primeira posição é %p\n", &vet[3]);
+  //O arrey é armazenado de forma sequencial
+
+  // %p => é usado para imprimir o endereço de memória
+  // & => é usado antes de uma variável pra o endereço de memória
+
+  double vet1[4]; // double tem mamanho de 8Bytes (incrementa a cada 8)
+  printf("\n\n");
+  printf("O endereço da primeira posição é %p\n", &vet1[0]);
+
+  printf("O endereço da primeira posição é %p\n", &vet1[1]);
+
+  printf("O endereço da primeira posição é %p\n", &vet1[2]);
+
+  printf("O endereço da primeira posição é %p\n", &vet1[3]);
+
+  printf("\n\n");
+
+  vet[2] = 5;
+  vet1[3] = 9.6;
+
+  printf("Vet[2] = %d\n", vet[2]);
+  printf("Endereço de vet[2] ná memória é: %p\n\n", &vet[2]);
+
+  printf("Vet1[3] = %1f\n", vet1[3]);
+  printf("Endereço de vet[2] ná memória é: %p\n\n", &vet1[3]);
 
 
-//typedef int nomeQueQuero;
-//TYPEDEF => Muito usado no ESTRUCT 
+  int vet3[] = {1, 3, 5, 7, 9};
+  //printf("Vet3[3] = %d\n", vet3[3]);
+  //printf("Endereço de vet3[3] ná memória é: %p\n\n", &vet3[3]);
 
+  //**LAÇO DE REPETIÇÃO PARA ESCREVER
 
-
-
-/*                ***FAZ PARTE DO EXEMPLO 03****
-typedef struct {
-  int codDisciplina;
-  TAluno aluno[MAXALUNOS];
-}TAluno;
-*/
-
-
-//Declaração das variaveis do STRUCT
-struct TAluno {
-  int matricula;
-  float notas[3];
-  float media;
-};
-
-struct TDisciplina {
-  int codDisciplina[DISCIPLINAS];;
-  struct TAluno aluno[MAXALUNOS];
-}; /*O struct TDisciplina é um vetor que vai conter o VETOR TAluno. 
-Nesse caso, a codDisciplina = matemática vai conter todos os alunos da turma na disciplina e vai repetir o STRUCT TAluno em todas as novas DISCIPLINAS. Imagino que seja o a representação estruturada do que seria uma matriz tridimensional 
-*/
-
-//INICIO
-int main(void) {
-
-  /*
-// ***TERCEIRO EXEMPLO - EX03***
-//USANDO STRUCT COM OUTRO STRUCT
-struct TDisciplina materia;//Nome da disciplina
-for (int i1 = 0; i1 < DISCIPLINAS; i1++){
-  printf("Código da disciplina:");
-  scanf("%d", &materia.codDisciplina[i1]);
-  printf("\n");
-  //  ***CRIANDO VETORES DE ESTRUTURAS NO EXEMPLO 03***
-  for (int i = 0; i < MAXALUNOS; i++){
-    printf("Cadastrando Aluno %d\n", i+1);
-    printf("Digite a Matricula: ");
-    scanf("%d", &materia.aluno[i].matricula);
-    printf("Cadastando as notas:\n");
-    for (int j = 0; j < 3; j++){
-      printf("Digite a nota %d: ", j+1);
-      scanf("%f", &materia.aluno[i].notas[j]);
-    }
-    
-    //CALCULANDO A MÉDIA
-    for (int cont = 0; cont < 3; cont++){
-      materia.aluno[i].media = materia.aluno[i].media + materia.aluno[i].notas[cont];
-    }
-    printf("\n");
+  for(int i = 0; i <= 4; i++){
+    printf("A posição %d do vet3 tem valor %d\n", i, vet3[i]);
+    printf("\t endereço na memória: %p\n", &vet3[i]);
   }
-}
-//MOSTRANDO AS MÉDIAS
-printf("***RESULTADOS***\n");
-for (int j = 0; j < DISCIPLINAS; j++){
-  printf("Médias das disciplina: %d\n", materia.codDisciplina[j]);
-  for (int i = 0; i < MAXALUNOS; i++){
-    printf("MATRICULA: %d\n", materia.aluno[i].matricula);
-    printf("MÉDIA: %.2f\n", materia.aluno[i].media/3);
-    printf("\n");
-  }  
-}
-//FIM DO VETOR
-
-
-
-*/
-
-
-
-
-
-
-
-
-/*   *******EXEMPLO DE INTRODUÇÃO **********
-  //int matricula = 90; (**SUBSTITUÍDO PELO ESTRUCT**)
-  //float notas[3] = {3.7, 8.9, 9.5};  (**SUBSTITUÍDO PELO ESTRUCT**)
-  //float media = 0;  (**SUBSTITUÍDO PELO ESTRUCT**)
-*************/
-
-
-
-
-
-
-
-
-
-  struct TAluno novoAluno;
-  struct TAluno novoAluno2;//novoAluno é uma nova variável do tipo TAluno
-
-
-
-//   ***SEGUNDO EXEMPLO - EX02***
-//CRIANDO VETORES DE ESTRUTURAS
-  struct TAluno vetorAlunos[MAXALUNOS];
-  for (int i = 0; i < MAXALUNOS; i++){
-    printf("Cadastrando Aluno %d\n", i+1);
-    printf("Digite a Matricula: ");
-    scanf("%d", &vetorAlunos[i].matricula);
-    printf("Cadastando as notas:\n");
-    for (int j = 0; j < 3; j++){
-      printf("Digite a nota %d: ", j+1);
-      scanf("%f", &vetorAlunos[i].notas[j]);
-    }
-    
-    //CALCULANDO A MÉDIA
-    for (int cont = 0; cont < 3; cont++){
-      vetorAlunos[i].media = vetorAlunos[i].media + vetorAlunos[i].notas[cont];
-    }
-    printf("\n");
-  }
-  //MOSTRANDO AS MÉDIAS
-  for (int i = 0; i < MAXALUNOS; i++){
-    printf("MATRICULA: %d\n", vetorAlunos[i].matricula);
-    printf("MÉDIA: %.2f\n", vetorAlunos[i].media/3);
-    printf("\n");
-  }
-//FIM DO VETOR
-
-  novoAluno.matricula = 90;
-  novoAluno.notas[0] = 3;
-  novoAluno.notas[1] = 5.5;
-  novoAluno.notas[2] = 7.3;
-
-  for (int i = 0; i < 3; i++){
-    novoAluno.media = novoAluno.media + novoAluno.notas[i];
-  }
-  novoAluno.media = novoAluno.media / 3;
-  for(int i = 0; i < 3; i++){
-    novoAluno.media = novoAluno.media + novoAluno.notas[i];
-  }
-  novoAluno.media = novoAluno.media / 3; 
-  printf("Aluno: %d\n", novoAluno.matricula);
-  printf("Media é: %.2f\n\n", novoAluno.media);
-
-
-
-
-
-  //STRUCT PARA O novoAluno2 
-  novoAluno2.matricula = 91;
-  novoAluno2.notas[0] = 5;
-  novoAluno2.notas[1] = 6.5;
-  novoAluno2.notas[2] = 7.5;
-  //CALCULANDO MÉDIA
-  for (int i = 0; i < 3; i++){
-    novoAluno2.media = novoAluno2.media + novoAluno2.notas[i];
-  }
-  novoAluno2.media = novoAluno2.media / 3;
-  //MOSTRANDO OS RESULTADOS 
-  printf("Aluno: %d\n", novoAluno2.matricula);
-  printf("Media é: %.2f\n", novoAluno2.media);
 
   return 0;
 }
