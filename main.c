@@ -1,51 +1,61 @@
 #include <stdio.h>
 
-int main(void){
-  int vet[4]; //O inteiro tem o tamanho de 4Bytes (incrementa a  cada 4)
-  printf("O endereço da primeira posição é %p\n", &vet[0]);
+int main(void) {
+  int var1 = 2, *pt1;//O * define que é um ponteiro
+  int var2 = 6, *pt2;//Se não tiver o * vai ser uma variável normal e qualquer
+  float var3 = 8, *pt3;// O ponteiro só pode trabalhar com uma variável do mesmo tipo
+  pt1 = &var1;//O ponteiro pt1 recebe o gurda o endereço da variável var1
 
-  printf("O endereço da primeira posição é %p\n", &vet[1]);
+  printf("O conteúdo da v ar1 é: %d\n", var1);
+  printf("O conteúdo da var2 é: %d\n", var2);
+  printf("O conteúdo da v é: %p\n", pt1);
+  printf("O conteúdo da va é: %p\n", &pt1);
+  printf("O conteúdo da var é: %d\n", *pt1);
+  printf("O conteúdo da var3 é: %.2f\n\n", var3);
 
-  printf("O endereço da primeira posição é %p\n", &vet[2]);
+  printf("***MOSTRANDO O ENDEREÇO DA MEMÓRIA***\n");
 
-  printf("O endereço da primeira posição é %p\n", &vet[3]);
-  //O arrey é armazenado de forma sequencial
+  printf("O Endereço da var1 é: %p\n", &var1);//O & faz referência ao endereço na memória e chama o valor contido na referencia
+  printf("O Endereço da var2 é: %p\n", &var2);
+  printf("O Endereço da var3 é: %p\n\n", &var3);
 
-  // %p => é usado para imprimir o endereço de memória
-  // & => é usado antes de uma variável pra o endereço de memória
+  printf("O conteúdo de pt1 é: %p, que é o endereço da var1!\n",pt1);
+  printf("O conteúdo da variável que pt1 faz referencia é: %d\n\n",*pt1);
 
-  double vet1[4]; // double tem mamanho de 8Bytes (incrementa a cada 8)
-  printf("\n\n");
-  printf("O endereço da primeira posição é %p\n", &vet1[0]);
+  var1 = 18;
+  printf("O conteúdo da variável que pt1 faz referencia é: %d\n",*pt1);  
+  printf("O conteúdo de pt1 é: %p, que é o endereço da var1!\n\n",pt1);
 
-  printf("O endereço da primeira posição é %p\n", &vet1[1]);
+  *pt1 = 8000;
 
-  printf("O endereço da primeira posição é %p\n", &vet1[2]);
+  printf("O conteúdo de var1 é: %d\n", var1);
+  printf("O Endereço de var1 é: %p\n\n", &var1);
 
-  printf("O endereço da primeira posição é %p\n", &vet1[3]);
+  pt1 = &var2;//a variável pt1 recebeu o endereço de var2
+  printf("Agora o endereço armazenado em pt1 é%d\n\n", *pt1);
 
-  printf("\n\n");
-
-  vet[2] = 5;
-  vet1[3] = 9.6;
-
-  printf("Vet[2] = %d\n", vet[2]);
-  printf("Endereço de vet[2] ná memória é: %p\n\n", &vet[2]);
-
-  printf("Vet1[3] = %1f\n", vet1[3]);
-  printf("Endereço de vet[2] ná memória é: %p\n\n", &vet1[3]);
+  printf("pt1: %p\n\n",pt1);
 
 
-  int vet3[] = {1, 3, 5, 7, 9};
-  //printf("Vet3[3] = %d\n", vet3[3]);
-  //printf("Endereço de vet3[3] ná memória é: %p\n\n", &vet3[3]);
 
-  //**LAÇO DE REPETIÇÃO PARA ESCREVER
 
-  for(int i = 0; i <= 4; i++){
-    printf("A posição %d do vet3 tem valor %d\n", i, vet3[i]);
-    printf("\t endereço na memória: %p\n", &vet3[i]);
-  }
+  //   *****ARITIMÉTICA DE PONTEIRO*****
+
+  printf("O resultado do incremento do pt1: %p\n\n",(pt1 +1));
+  
+  
+  // (pt = 108)--    pt++:    pt= 112 (para inteiros)
+  // (*pt) = é igual ao valor contido na variavel --- ++(*pt) vai somar o valor que tem dentro da variável. (++*pt) primeiro soma e continua com o código e (*pt++) segue o código e depois soma
+
+//  ******VETORES******
+printf("MOSTRANDO ENDEREÇOS DE VETORES\n");
+  int vetor[4];
+  printf("O endereço da posição [0] é: %p\n", &vetor[0]);
+  printf("O endereço da posição [1] é: %p\n", &vetor[1]);
+  printf("O endereço da posição [2] é: %p\n", &vetor[2]);
+  printf("O endereço da posição [3] é: %p\n\n", &vetor[3]);
+
+  printf("O endereço do vetor vai ser dado pela 1° posição do vetor, que da a referencia para os demais. Ele só aponta onde começa, já que sabe quantas posições tem o vetor. Endereço de vetor: %p",&vetor);
 
   return 0;
 }
